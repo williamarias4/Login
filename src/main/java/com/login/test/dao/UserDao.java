@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDao implements Dao<User> {
     
-    @Autowired
+    
     private List<User> users = new ArrayList<>();
 
     @Override

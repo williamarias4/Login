@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.login.test.connection;
 
 import java.io.FileInputStream;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
-
+import com.mysql.cj.jdbc.MysqlDataSource;
+import java.io.IOException;
 
 /**
  *
@@ -21,33 +12,42 @@ import javax.sql.DataSource;
  */
 public class ConnectionSQL {
 
-    Context context;
-    DataSource dataSource;
-    
-//    public static DataSource getMySQLDataSource() {
-//		Properties props = new Properties();
-//		FileInputStream fis = null;
-//		MysqlDataSource mysqlDS = null;
-//		try {
-//			fis = new FileInputStream("db.properties");
-//			props.load(fis);
-//			mysqlDS = new MysqlDataSource();
-//			mysqlDS.setURL(props.getProperty("MYSQL_DB_URL"));
-//			mysqlDS.setUser(props.getProperty("MYSQL_DB_USERNAME"));
-//			mysqlDS.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return mysqlDS;
-//	}
-    
+//    String dbUrl = "jdbc:mysql://localhost:3306/login";
+//    String user = "root";
+//    String password = "";
+    public static DataSource getMySQLDataSource() {
+        Properties props = new Properties();
+        FileInputStream fis = null;
+        MysqlDataSource mysqlDS = null;
+        try {
+            fis = new FileInputStream("src/main/resources/db.properties");
+            props.load(fis);
+            mysqlDS = new MysqlDataSource();
+            mysqlDS.setURL(props.getProperty("MYSQL_DB_URL"));
+            mysqlDS.setUser(props.getProperty("MYSQL_DB_USERNAME"));
+            mysqlDS.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mysqlDS;
+    }
 
-//    public ConnectionSQL() {
+//    public static DataSource getOracleDataSource() {
+//        Properties props = new Properties();
+//        FileInputStream fis = null;
+//        OracleDataSource oracleDS = null;
 //        try {
-//            Context context = new InitialContext();
-//            DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/myDB");
-//        } catch (NamingException ex) {
-//            Logger.getLogger(ConnectionSQL.class.getName()).log(Level.SEVERE, null, ex);
+//            fis = new FileInputStream("db.properties");
+//            props.load(fis);
+//            oracleDS = new OracleDataSource();
+//            oracleDS.setURL(props.getProperty("ORACLE_DB_URL"));
+//            oracleDS.setUser(props.getProperty("ORACLE_DB_USERNAME"));
+//            oracleDS.setPassword(props.getProperty("ORACLE_DB_PASSWORD"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
 //        }
+//        return oracleDS;
 //    }
 }
