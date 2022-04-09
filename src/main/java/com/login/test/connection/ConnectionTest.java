@@ -1,6 +1,8 @@
 
 package com.login.test.connection;
 
+import com.login.test.dao.UserDao;
+import com.login.test.data.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,12 +14,16 @@ import java.sql.Statement;
  * @author willi
  */
 public class ConnectionTest {
+    
+    
 
     public static void main(String[] args) {
 
         testConnection();
         System.out.println("**********");
-
+//        User user = new User("bongo","password123");
+//        UserDao dao = new UserDao();
+//        dao.save(user);
     }
 
     public static void testConnection() {

@@ -12,10 +12,10 @@ public class User {
     private String password;
     private String reset_password_token;
     
-    public User(String username, String password, String reset_password_token){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
-        this.reset_password_token = reset_password_token;
+        
     }
     
     //<editor-fold defaultstate="collapsed" desc="Setters & Getters">
