@@ -13,25 +13,27 @@ import java.util.Optional;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author willi
  */
+@Repository
 @Component
 public class UserDao implements Dao<User> {
 
-    private List<User> users = new ArrayList<>();
-
     @Override
     public Optional<User> get(int id) {
+        List<User> users = new ArrayList<>();
+        users = getAll();
         return Optional.ofNullable(users.get(id));
     }
 
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        User user = null;
+        User user;
         DataSource ds = null;
         ds = ConnectionSQL.getMySQLDataSource();
 
@@ -43,6 +45,7 @@ public class UserDao implements Dao<User> {
             stmt = con.createStatement();
             rs = stmt.executeQuery("Select * from User");
             while (rs.next()) {
+                user = new User();
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("pass"));
                 users.add(user);

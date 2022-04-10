@@ -1,15 +1,14 @@
-package com.login.test.dao;
+package com.login.test.service;
 
+import com.login.test.data.User;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author willi
  */
-
-public interface Dao<T> {
+public interface IService<T> {
 
     Optional<T> get(int id);
 
