@@ -12,9 +12,6 @@ import java.io.IOException;
  */
 public class ConnectionSQL {
 
-//    String dbUrl = "jdbc:mysql://localhost:3306/login";
-//    String user = "root";
-//    String password = "";
     public static DataSource getMySQLDataSource() {
         Properties props = new Properties();
         FileInputStream fis = null;
